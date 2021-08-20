@@ -50,6 +50,6 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 pull_number: node.number,
-                merge_method: "squash"
+                merge_method: "rebase"
              })
             }

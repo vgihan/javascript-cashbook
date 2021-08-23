@@ -1,0 +1,280 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+header {
+  background: #045D8B;
+  position: absolute;
+  width: 100%;
+  height: 110px;
+}
+.tab {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+
+  position: absolute;
+  left: 84.43%;
+  right: 0%;
+  top: 25.56%;
+  bottom: 25.56%;
+
+  border-radius: 10px;
+}
+.month_year {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+
+  position: absolute;
+  left: 36.38%;
+  right: 36.5%;
+  top: 5.56%;
+  bottom: 5.56%;
+}
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+
+  position: absolute;
+  left: -0.83%;
+  right: 91.98%;
+  top: 36.67%;
+  bottom: 36.67%;
+}
+.icon {
+  position: static;
+  width: 24px;
+  height: 24px;
+  left: 10px;
+  top: 10px;
+  /* Inside Auto Layout */
+  flex: none;
+  order: 0;
+  align-self: flex-start;
+  flex-grow: 0;
+  margin: 0px 10px;
+}
+.text {
+  position: absolute;
+  left: 0%;
+  right: 91.16%;
+  top: 36.67%;
+  bottom: 36.67%;
+
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 24px;
+
+  color: #FCFCFC;
+}
+.month_year {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+
+  position: absolute;
+  left: 36.38%;
+  right: 36.5%;
+  top: 5.56%;
+  bottom: 5.56%;
+}
+.move_icon {
+  position: static;
+  width: 24px;
+  height: 24px;
+  left: 0px;
+  top: 28px;
+  /* Inside Auto Layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 44px;
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+
+  position: static;
+  width: 94px;
+  height: 80px;
+  left: 68px;
+  top: 0px;
+  /* Inside Auto Layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 0px 44px;
+}
+.logo_box {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+
+  position: absolute;
+  left: -0.83%;
+  right: 91.98%;
+  top: 36.67%;
+  bottom: 36.67%;
+}
+#logo {
+  position: absolute;
+  left: 10%;
+  right: 91.16%;
+  top: 36.67%;
+  bottom: 36.67%;
+
+  /* Display Small */
+
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 24px;
+  /* identical to box height, or 100% */
+
+  /* Off-white */
+
+  color: #FCFCFC;
+}
+#year {
+  position: static;
+  width: 56px;
+  height: 24px;
+  left: 19px;
+  top: 56px;
+
+  /* Display Small */
+
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 24px;
+  /* identical to box height, or 100% */
+
+
+  /* Off-white */
+
+  color: #FCFCFC;
+
+
+  /* Inside Auto Layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 0px 0px;
+}
+#month {
+  /* Month */
+
+  position: static;
+  width: 94px;
+  height: 56px;
+  left: 0px;
+  top: 0px;
+
+  /* Display Large */
+
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 56px;
+  /* identical to box height, or 117% */
+
+  /* Off-white */
+
+  color: #FCFCFC;
+
+  /* Inside Auto Layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 0px;
+}
+#right_move {
+  left: 206px;
+  order: 2;
+}
+#stat_img {
+  align-self: flex-start;
+}
+#main_icon {
+  /* 달력 */
+  /* Auto Layout */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px;
+
+  position: static;
+  width: 44px;
+  height: 44px;
+  left: 88px;
+  top: 0px;
+
+  border-radius: 0px 10px 10px 0px;
+  /* Inside Auto Layout */
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+  margin: 0px 0px;
+}
+#cal_icon {
+  /* 통계 */
+  /* Auto Layout */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px;
+
+  position: static;
+  width: 44px;
+  height: 44px;
+  left: 44px;
+  top: 0px;
+  /* Inside Auto Layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 0px 0px;
+}
+#stat_icon {
+  /* 내역 */
+  /* Auto Layout */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px;
+
+  position: static;
+  width: 44px;
+  height: 44px;
+  left: 0px;
+  top: 0px;
+
+  border-radius: 10px 0px 0px 10px;
+  /* Inside Auto Layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 0px;
+}

@@ -2,7 +2,8 @@ name: "PR Merge on time v2"
 
 on:
   schedule:
-  - cron: '01,10 19 * * *'
+  - cron: '01,10 19 * * 1-4'
+  - cron: '01,10 03 * * 5'
 
   workflow_dispatch:
 

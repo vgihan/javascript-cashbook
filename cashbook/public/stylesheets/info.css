@@ -1,0 +1,49 @@
+.info_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    position: absolute;
+    width: 848px;
+    height: 28px;
+    left: 29%;
+    top: 28%;
+}
+.num_of_history {
+    display: flex;
+    align-items: flex-start;
+}
+.info_checkbox {
+    float: right;
+    position: static;
+    height: 28px;
+    left: 543px;
+    top: 0px;
+}
+.num_of_history {
+    position: static;
+    width: 300px;
+    height: 22px;
+    left: 0px;
+    top: 0px;
+
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 20px;
+
+    color: #00365D;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 8px;
+}
+input[type=checkbox] {
+    margin: 0px 8px;
+}
+input[type=checkbox]:checked {
+    background-color: #00365D;
+}

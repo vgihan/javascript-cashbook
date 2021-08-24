@@ -10,15 +10,16 @@ header {
   width: 2000px;
   height: 160px;
 }
+a {
+  text-decoration: none;
+}
 .tab {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  padding: 0px;
 
   position: absolute;
   left: 84.43%;
-  right: 0%;
   top: 25.56%;
   bottom: 25.56%;
 
@@ -29,7 +30,6 @@ header {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 0px;
 
   position: absolute;
   left: 30.38%;
@@ -41,7 +41,6 @@ header {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  padding: 0px;
 
   position: absolute;
   left: -0.83%;
@@ -56,14 +55,11 @@ header {
   left: 10px;
   top: 10px;
   flex: none;
-  order: 0;
   align-self: flex-start;
-  flex-grow: 0;
   margin: 0px 10px;
 }
 .text {
   position: absolute;
-  left: 0%;
   right: 91.16%;
   top: 36.67%;
   bottom: 36.67%;
@@ -81,7 +77,6 @@ header {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 0px;
 
   position: absolute;
   left: 36.38%;
@@ -104,13 +99,11 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0px;
 
   position: static;
   width: 94px;
   height: 80px;
   left: 68px;
-  top: 0px;
   flex: none;
   order: 1;
   flex-grow: 0;
@@ -119,7 +112,6 @@ header {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  padding: 0px;
 
   position: absolute;
   left: -0.83%;
@@ -162,12 +154,6 @@ header {
   margin: 0px 0px;
 }
 #month {
-  position: static;
-  width: 73px;
-  height: 56px;
-  left: 0px;
-  top: 0px;
-
   font-family: Merriweather;
   font-style: normal;
   font-weight: bold;
@@ -200,7 +186,6 @@ header {
   width: 44px;
   height: 44px;
   left: 88px;
-  top: 0px;
 
   border-radius: 0px 10px 10px 0px;
   /* Inside Auto Layout */
@@ -221,7 +206,6 @@ header {
   width: 44px;
   height: 44px;
   left: 44px;
-  top: 0px;
   /* Inside Auto Layout */
 
   flex: none;
@@ -240,8 +224,6 @@ header {
   position: static;
   width: 44px;
   height: 44px;
-  left: 0px;
-  top: 0px;
 
   border-radius: 10px 0px 0px 10px;
   /* Inside Auto Layout */

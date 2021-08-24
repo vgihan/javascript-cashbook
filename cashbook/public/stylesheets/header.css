@@ -7,8 +7,8 @@ html, body {
 header {
   background: #045D8B;
   position: absolute;
-  width: 100%;
-  height: 110px;
+  width: 2000px;
+  height: 160px;
 }
 .tab {
   display: flex;
@@ -32,7 +32,7 @@ header {
   padding: 0px;
 
   position: absolute;
-  left: 36.38%;
+  left: 30.38%;
   right: 36.5%;
   top: 5.56%;
   bottom: 5.56%;
@@ -55,7 +55,6 @@ header {
   height: 24px;
   left: 10px;
   top: 10px;
-  /* Inside Auto Layout */
   flex: none;
   order: 0;
   align-self: flex-start;
@@ -88,7 +87,7 @@ header {
   left: 36.38%;
   right: 36.5%;
   top: 5.56%;
-  bottom: 5.56%;
+  bottom: 25.56%;
 }
 .move_icon {
   position: static;
@@ -96,7 +95,6 @@ header {
   height: 24px;
   left: 0px;
   top: 28px;
-  /* Inside Auto Layout */
   flex: none;
   order: 0;
   flex-grow: 0;
@@ -113,11 +111,9 @@ header {
   height: 80px;
   left: 68px;
   top: 0px;
-  /* Inside Auto Layout */
   flex: none;
   order: 1;
   flex-grow: 0;
-  margin: 0px 44px;
 }
 .logo_box {
   display: flex;
@@ -138,16 +134,11 @@ header {
   top: 36.67%;
   bottom: 36.67%;
 
-  /* Display Small */
-
   font-family: Merriweather;
   font-style: normal;
   font-weight: bold;
   font-size: 24px;
   line-height: 24px;
-  /* identical to box height, or 100% */
-
-  /* Off-white */
 
   color: #FCFCFC;
 }
@@ -158,22 +149,12 @@ header {
   left: 19px;
   top: 56px;
 
-  /* Display Small */
-
   font-family: Merriweather;
   font-style: normal;
   font-weight: bold;
   font-size: 24px;
   line-height: 24px;
-  /* identical to box height, or 100% */
-
-
-  /* Off-white */
-
   color: #FCFCFC;
-
-
-  /* Inside Auto Layout */
 
   flex: none;
   order: 1;
@@ -181,28 +162,19 @@ header {
   margin: 0px 0px;
 }
 #month {
-  /* Month */
-
   position: static;
-  width: 94px;
+  width: 73px;
   height: 56px;
   left: 0px;
   top: 0px;
 
-  /* Display Large */
-
   font-family: Merriweather;
   font-style: normal;
   font-weight: bold;
-  font-size: 48px;
+  font-size: 40px;
   line-height: 56px;
-  /* identical to box height, or 117% */
-
-  /* Off-white */
 
   color: #FCFCFC;
-
-  /* Inside Auto Layout */
 
   flex: none;
   order: 0;

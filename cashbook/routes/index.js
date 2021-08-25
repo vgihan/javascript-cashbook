@@ -3,9 +3,15 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.redirect('/main');
+  const date = new Date();
+  const month = date.getMonth()+1;
+  const year = date.getFullYear();
+  res.redirect(`/main?year=${year}&month=${month}`);
 });
 router.get('/main', function(req, res, next) {
+  const year = req.query.year;
+  const month = req.query.month-1;
+  const monthStrs = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   // 임시 데이터
   const histories = {
     21: [
@@ -26,12 +32,10 @@ router.get('/main', function(req, res, next) {
     4: {dayOfWeek: '화', income: 0, expenditure: 30000},
     7: {dayOfWeek: '수', income: 0, expenditure: 30000},
   }
-  const date = new Date();
-  const month = date.getMonth();
-  const year = date.getFullYear();
   res.render('main', {
     year: year, 
-    month: month, 
+    month_str: monthStrs[month],
+    month_num: month+1,
     income: '999,999원', 
     expenditure: '999,999원',
     numOfHistory: 9,
@@ -40,10 +44,24 @@ router.get('/main', function(req, res, next) {
   });
 });
 router.get('/calendar', function(req, res, next) {
-  res.render('caledar', { title: 'Express' });
+  const year = req.query.year;
+  const month = req.query.month-1;
+  const monthStrs = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  res.render('calendar', { 
+    year: year, 
+    month_str: monthStrs[month],
+    month_num: month+1,
+  });
 });
 router.get('/statistic', function(req, res, next) {
-  res.render('statistic', { title: 'Express' });
+  const year = req.query.year;
+  const month = req.query.month-1;
+  const monthStrs = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  res.render('statistic', {
+    year: year, 
+    month_str: monthStrs[month],
+    month_num: month+1,
+  });
 });
 
 module.exports = router;

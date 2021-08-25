@@ -3,7 +3,7 @@
         label.input_date_text 일자
         -var curDate = new Date();
         -var date = `${curDate.getFullYear()}${curDate.getMonth().toString().padStart(2,0)}${curDate.getDay().toString().padStart(2,0)}`
-        input(type="text", name="date", id="date", placeholder="입력하세요", value=date)
+        input(type="date", name="date", id="date", placeholder="입력하세요", value=date)
     .input_box.category
         label.input_category_text 분류
         -var categories = ['선택하세요', '생활', '식비', '교통', '쇼핑/뷰티', '의료/건강', '문화/여가', '미분류']

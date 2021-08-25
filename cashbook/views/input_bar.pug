@@ -1,4 +1,6 @@
-form(action="/", method="POST")    
+form(action="/history", method="POST")
+    input(type="hidden" name="year" value=year)
+    input(type="hidden" name="month" value=month_num)
     .input_bar 
         .input_box.date
             label.input_date_text 일자

@@ -1,0 +1,28 @@
+mixin info_bar(year, month, day, dayOfWeek, income, expenditure)
+    .day_info_box
+        .day_info_date_box 
+            p.day_info_date #{month}월 #{day}일
+            p.day_info_dayOfWeek #{dayOfWeek}
+        .day_info_sum_box 
+            -if(dayInfo[day]['income'] !== 0)
+                p.day_info_sum 수입 #{income}
+            -if(dayInfo[day]['expenditure'] !== 0)
+                p.day_info_sum 지출 #{expenditure}
+
+mixin history_boxes(histories)
+    each history in histories
+        .detail_box
+            .category_box
+                p.category_text #{history.category}
+            p.memo_text #{history.memo}
+            p.payment_text #{history.payment}
+            p.price_text #{history.price}
+
+.days_box
+    each day in Object.keys(histories)
+        .day_box
+            +info_bar(year, month+1, day, dayInfo[day]['dayOfWeek'], dayInfo[day]['income'], dayInfo[day]['expenditure'])
+            .history_box
+                +history_boxes(histories[day])
+
+                    

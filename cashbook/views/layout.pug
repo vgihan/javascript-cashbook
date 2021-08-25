@@ -1,28 +1,6 @@
 doctype html
 html
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    title Cashbook
   body
-    link(rel="preconnect", href="https://fonts.googleapis.com")
-    link(rel="preconnect", href="https://fonts.gstatic.com" crossorigin)
-    link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap")
-    header
-      a#logo Butlet
-      .logo_box
-      .month_year 
-        a#left_move.move_icon
-          img(src="images/left_move_icon.png" alt="" class="move_img")
-        .text 
-          p#month July
-          p#year 2021
-        a#right_move.move_icon
-          img(src="images/right_move_icon.png" alt="" class="move_img")
-      .tab
-        a#main_icon
-          img(src="images/main_icon_on.png" alt="" class="icon" id="main_img")
-        a#cal_icon
-          img(src="images/cal_icon_off.png" alt="" class="icon" id="cal_img")
-        a#stat_icon
-          img(src="images/stat_icon_off.png" alt="" class="icon" id="stat_img")
     block content

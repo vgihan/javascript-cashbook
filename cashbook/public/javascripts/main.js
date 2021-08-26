@@ -27,7 +27,6 @@ function dropdownHandler(name) {
     dropdown.style.display = 'block';
     else dropdown.style.display = 'none';
 }
-
 function incomeCheckHandler() {
     const incomeCheckbox = document.getElementById('income');
     if(incomeCheckbox.checked) onIncome();

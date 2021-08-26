@@ -1,5 +1,23 @@
 document.getElementById('income').addEventListener('click', incomeCheckHandler);
 document.getElementById('expenditure').addEventListener('click', expenditureCheckHandler);
+document.querySelector('.input_box.category > .dropdown_box').addEventListener('click', categoryDropdownHandler);
+document.querySelectorAll('.dropdown_category > .dropdown_item').forEach(element => {
+    element.addEventListener('click', categoryClickHandler);
+});
+
+function categoryClickHandler(ev) {
+    const target = document.querySelector('.dropdown_box > .target');
+    const selectedValue = ev.target.innerText;
+    target.innerText = selectedValue;
+    target.style.color = 'black';
+    document.querySelector('.input_box.category > #category').value = selectedValue;
+}
+function categoryDropdownHandler() {
+    const categoryDropdown = document.querySelector('.dropdown_category');
+    if(categoryDropdown.style.display === 'none')
+        categoryDropdown.style.display = 'block';
+    else categoryDropdown.style.display = 'none';
+}
 
 function incomeCheckHandler() {
     const incomeCheckbox = document.getElementById('income');

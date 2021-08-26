@@ -5,8 +5,8 @@
 
     position: absolute;
     width: 848px;
-    left: 550px;
-    top: 300px;
+    left: 570px;
+    top: 310px;
 }
 .day_box {
     display: flex;
@@ -123,7 +123,7 @@
 
     position: static;
     width: 848px;
-    height: 70px;
+    height: 60px;
     top: 72px;
 
     border-bottom: 1px solid #D7D7D7;

@@ -5,10 +5,10 @@
     align-items: flex-start;
 
     position: absolute;
-    width: 848px;
+    width: 840px;
     height: 28px;
-    left: 542px;
-    top: 260px;
+    left: 568px;
+    top: 275px;
 }
 .num_of_history {
     display: flex;

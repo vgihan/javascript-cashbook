@@ -4,9 +4,24 @@ mixin dropdownCategory(list)
         .icon &#5167;
     ul.dropdown_category(style="display:none;")
         each item in list
-            li.dropdown_item= item
+            li.dropdown_item 
+                .content= item
+
+mixin dropdownPayment(list)
+    .dropdown_box 
+        .target 선택하세요
+        .icon &#5167;
+    ul.dropdown_payment(style="display:none;")
+        each item in list
+            li.dropdown_item
+                .content= item
+                img(src='images/payment_delete.png')
+        li.dropdown_item 
+            span.content 추가하기
+
 
 -const categories = ['생활', '식비', '교통', '쇼핑/뷰티', '의료/건강', '문화/여가', '미분류']
+-const payments = ['카카오페이', '네이버페이', '케이뱅크']
 form(action="/history", method="POST")
     input(type="hidden" name="year" value=year)
     input(type="hidden" name="month" value=month_num)
@@ -24,11 +39,9 @@ form(action="/history", method="POST")
             label.input_memo_text 내용
             input(type="text", name="memo", id="memo", placeholder="입력하세요")
         .input_box.payment
-            -var payments = ['선택하세요']
             label.input_payment_text 결제수단
-            select(name="payment", placeholder="선택하세요")
-                each index in payments 
-                    option(value=index)= index
+            input(type="hidden", name="payment", id="payment", value='미분류')
+            +dropdownPayment(payments)
         .input_box.price
             label.input_price_text 금액
             input(type="text", name="price", id="price", placeholder="입력하세요")

@@ -6,7 +6,6 @@ mixin info_bar(year, month, day, dayOfWeek, income, expenditure)
         .day_info_sum_box 
             -const _income = income.toLocaleString('ko-KR');
             -const _expenditure = expenditure.toLocaleString('ko-KR');
-            -console.log(_income);
             -if(dayInfo[day]['income'] !== 0)
                 p.day_info_sum= '수입 ' + _income 
             -if(dayInfo[day]['expenditure'] !== 0)
@@ -28,5 +27,3 @@ mixin history_boxes(histories)
             +info_bar(year, month+1, day, dayInfo[day]['dayOfWeek'], dayInfo[day]['income'], dayInfo[day]['expenditure'])
             .history_box
                 +history_boxes(histories[day])
-
-                    

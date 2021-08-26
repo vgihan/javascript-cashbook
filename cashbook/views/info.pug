@@ -1,8 +1,10 @@
 .info_box 
     p.num_of_history 전체 내역 #{numOfHistory}건
     .info_checkbox 
+        -const _income = income.toLocaleString('ko-KR');
+        -const _expenditure = expenditure.toLocaleString('ko-KR');
         input(type="checkbox" name="income" checked)
-        label(for="income") 수입 #{income}
+        label(for="income")= `수입 ${_income}`
         input(type="checkbox" name="expenditure" checked) 
-        label(for="expenditure") 지출 #{expenditure}
+        label(for="expenditure")= `지출 ${_expenditure}`
             

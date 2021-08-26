@@ -4,19 +4,23 @@ mixin info_bar(year, month, day, dayOfWeek, income, expenditure)
             p.day_info_date #{month_num}월 #{day}일
             p.day_info_dayOfWeek #{dayOfWeek}
         .day_info_sum_box 
+            -const _income = income.toLocaleString('ko-KR');
+            -const _expenditure = expenditure.toLocaleString('ko-KR');
+            -console.log(_income);
             -if(dayInfo[day]['income'] !== 0)
-                p.day_info_sum 수입 #{income}
+                p.day_info_sum= '수입 ' + _income 
             -if(dayInfo[day]['expenditure'] !== 0)
-                p.day_info_sum 지출 #{expenditure}
+                p.day_info_sum= '지출 ' + _expenditure
 
 mixin history_boxes(histories)
     each history in histories
         .detail_box
+            -const _price = history.price.toLocaleString('ko-KR');
             .category_box
                 p.category_text #{history.category}
             p.memo_text #{history.memo}
             p.payment_text #{history.payment}
-            p.price_text #{history.price}
+            p.price_text= `${_price} 원`
 
 .days_box
     each day in Object.keys(histories)

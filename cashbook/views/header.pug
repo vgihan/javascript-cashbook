@@ -5,14 +5,17 @@ header
       a(href="/#" id="left_move" class="move_icon")
         img(src="images/left_move_icon.png" alt="" class="move_img")
       .text
-        p(id="month") <!-- curMonth -->
-        p(id="year") <!-- curYear -->
+        p(id="month") #{month_str}
+        p(id="year") #{year}
       a(href="/#" id="right_move" class="move_icon")
         img(src="images/right_move_icon.png" alt="" class="move_img")
     .tab
-      a(href="/#" id="main_icon")
+      -const main_url = `http://localhost:3000/main?year=${year}&month=${month_num}`
+      a#main_icon(href=main_url)
         img(src="images/main_icon_on.png" alt="" class="icon")
-      a(href="/#" id="cal_icon")
+      -const cal_url = `http://localhost:3000/calendar?year=${year}&month=${month_num}`
+      a#cal_icon(href=cal_url)
         img(src="images/cal_icon_off.png" alt="" class="icon" id="cal_img")
-      a(href="/#" id="stat_icon")
+      -const stat_url = `http://localhost:3000/statistic?year=${year}&month=${month_num}`
+      a#stat_icon(href=stat_url)
         img(src="images/stat_icon_off.png" alt="" class="icon" id="stat_img")

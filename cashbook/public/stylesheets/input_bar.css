@@ -68,10 +68,10 @@ input[type=text], input[type=date] {
     padding-left: 20px;
 
     position: fixed;
-    width: 1000px;
+    width: 1230px;
     height: 100px;
-    left: 480px;
-    top: 120px;
+    left: 370px;
+    top: 125px;
     z-index: 2;
 
     background: white;
@@ -88,7 +88,7 @@ input[type=text], input[type=date] {
     justify-content: center;
 
     position: static;
-    width: 180px;
+    width: 250px;
     height: 55px;
 
     flex: none;
@@ -99,8 +99,14 @@ input[type=text], input[type=date] {
 .input_box:not(:nth-child(5)) {
     border-right: 1px solid #BBBBBB;
 }
+.input_box.date {
+    width: 170px;
+}
 .input_box.category {
-    width: 164px;
+    width: 170px;
+}
+.input_box.memo {
+    width: 270px;
 }
 .input_box.payment {
     width: 150px;
@@ -109,7 +115,7 @@ input[type=text], input[type=date] {
     width: 120px;
 }
 .input_box.price {
-    width: 120px;
+    width: 250px;
 }
 .input_box.price > #price {
     width: 130px;

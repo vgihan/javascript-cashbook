@@ -3,8 +3,8 @@
     .info_checkbox 
         -const _income = income.toLocaleString('ko-KR');
         -const _expenditure = expenditure.toLocaleString('ko-KR');
-        input(type="checkbox" name="income" checked)
+        input(type="checkbox" name="income" id="income" checked)
         label(for="income")= `수입 ${_income}`
-        input(type="checkbox" name="expenditure" checked) 
+        input(type="checkbox" name="expenditure" id="expenditure" checked) 
         label(for="expenditure")= `지출 ${_expenditure}`
             

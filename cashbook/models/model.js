@@ -28,9 +28,17 @@ class Model {
                        WHERE strftime('%Y',date)='${year}' and strftime('%m',date)='${(month+1).toString().padStart(2, '0')}';`;
         return await this.query(query);
     }
+    async selectPayment() {
+        const query = `SELECT * FROM payment`;
+        return await this.query(query);
+    }
     async insertHistory(history) {
         const query = `INSERT INTO history(date, category, memo, payment, price)
                        VALUES('${history.date}', '${history.category}', '${history.memo}', '${history.payment}', ${history.price});`;
+        return await this.query(query);
+    }
+    async insertPayment(payment) {
+        const query = `INSERT INTO payment(payment) VALUES (${payment})`;
         return await this.query(query);
     }
     query(query) {

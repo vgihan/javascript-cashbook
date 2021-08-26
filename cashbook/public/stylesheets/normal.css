@@ -1,0 +1,90 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background: #045D8B;
+    position: fixed;
+    width: 2000px;
+    height: 160px;
+    z-index: 1;
+}
+a {
+    text-decoration: none;
+}
+input[type=checkbox] {
+    margin: 0px 8px;
+    cursor: pointer;
+}
+input[type=checkbox]:checked {
+    background-color: #00365D;
+}
+select {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    width: 160px;
+    height: 23px;
+
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 23px;
+    text-transform: uppercase;
+    color: #BBBBBB;
+    
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 10px 0px 0px 0px;
+
+    border-style: none;
+}
+label {
+    position: static;
+    width: 80px;
+    height: 17px;
+
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 17px;
+    text-transform: uppercase;
+    color: #00365D;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+input[type=text], input[type=date] {
+    position: static;
+    width: 160px;
+    height: 23px;
+    top: 21px;
+
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 23px;
+    text-transform: uppercase;
+
+    color: #222222;
+    border-style: none;
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 10px 0px 0px 0px;
+}
+input:focus {
+    outline: none;
+}
+input[type=date] {
+    cursor: pointer;
+}

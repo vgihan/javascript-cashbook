@@ -10,14 +10,13 @@ exports.index = (req, res, next) => {
 exports.main = async (req, res, next) => {
     const data = await model.selectHistory(req.query.year, req.query.month-1);
     const monthStrs = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    console.log(data);
     res.render('main', {
         year: req.query.year, 
         month_str: monthStrs[req.query.month-1],
         month_num: req.query.month,
-        income: '999,999원', 
-        expenditure: '999,999원',
-        numOfHistory: 9,
+        income: 1234567, 
+        expenditure: 1234567,
+        numOfHistory: data.length,
         histories: getHistories(data),
         dayInfo: getDayInfo(data),
     });

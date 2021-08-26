@@ -67,11 +67,12 @@ input[type=text], input[type=date] {
     align-content: center;
     padding: 4px;
 
-    position: absolute;
+    position: fixed;
     width: 1000px;
     height: 76px;
     left: 480px;
     top: 120px;
+    z-index: 2;
 
     background: white;
 

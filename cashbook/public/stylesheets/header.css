@@ -6,9 +6,10 @@ html, body {
 }
 header {
   background: #045D8B;
-  position: absolute;
+  position: fixed;
   width: 2000px;
   height: 160px;
+  z-index: 1;
 }
 a {
   text-decoration: none;

@@ -1,18 +1,25 @@
+mixin dropdownCategory(list)
+    .dropdown_box
+        .target 선택하세요
+        .icon &#5167;
+    ul.dropdown_category(style="display:none;")
+        each item in list
+            li.dropdown_item= item
+
+-const categories = ['생활', '식비', '교통', '쇼핑/뷰티', '의료/건강', '문화/여가', '미분류']
 form(action="/history", method="POST")
     input(type="hidden" name="year" value=year)
     input(type="hidden" name="month" value=month_num)
     .input_bar 
         .input_box.date
-            label.input_date_text 일자
             -var curDate = new Date();
             -var date = `${curDate.getFullYear()}${curDate.getMonth().toString().padStart(2,0)}${curDate.getDay().toString().padStart(2,0)}`
+            label.input_date_text 일자
             input(type="date", name="date", id="date", placeholder="입력하세요", value=date)
         .input_box.category
             label.input_category_text 분류
-            -var categories = ['선택하세요', '생활', '식비', '교통', '쇼핑/뷰티', '의료/건강', '문화/여가', '미분류']
-            select(name="category", placeholder="선택하세요")
-                each index in categories 
-                    option(value=index)= index
+            input(type="hidden", name="category", id="category", value='미분류')
+            +dropdownCategory(categories)
         .input_box.memo
             label.input_memo_text 내용
             input(type="text", name="memo", id="memo", placeholder="입력하세요")

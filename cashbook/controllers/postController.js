@@ -13,5 +13,7 @@ exports.history = async (req, res, next) => {
     res.redirect(`/main?year=${req.body.year}&month=${req.body.month}`);
 }
 exports.payment = (req, res, next) => {
-    
+    const payment = req.body.payment;
+    await model.insertPayment(payment);
+    res.redirect(`/main?year=${req.body.year}&month=${req.body.month}`);
 }

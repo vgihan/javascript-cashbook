@@ -14,14 +14,14 @@ exports.main = async (req, res, next) => {
         year: req.query.year, 
         month_str: monthStrs[req.query.month-1],
         month_num: req.query.month,
-        income: 1234567, 
-        expenditure: 1234567,
+        income: data.reduce((pre, v) => {if(v.price > 0) pre += v.price;return pre;}, 0), 
+        expenditure: data.reduce((pre, v) => {if(v.price < 0) pre += v.price;return pre;}, 0),
         numOfHistory: data.length,
         histories: getHistories(data),
         dayInfo: getDayInfo(data),
     });
     function getHistories(data) {
-        return data.reduce((pre, v, i) => {
+        return data.reduce((pre, v) => {
             const curDate = new Date(v.date).getDate();
             if(!pre[curDate]) pre[curDate] = [];
             pre[curDate].push(v);
@@ -29,7 +29,7 @@ exports.main = async (req, res, next) => {
         }, {});
     }
     function getDayInfo(data) {
-        return data.reduce((pre, v, i) => {
+        return data.reduce((pre, v) => {
             const date = new Date(v.date);
             const weeks = ['일', '월', '화', '수', '목', '금', '토'];
             if(!pre[date.getDate()]) {

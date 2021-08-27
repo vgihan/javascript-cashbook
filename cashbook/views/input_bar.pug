@@ -44,6 +44,9 @@ form(action="/history", method="POST")
             +dropdownPayment(payments)
         .input_box.price
             label.input_price_text 금액
-            input(type="text", name="price", id="price", placeholder="입력하세요")
+            div
+                span -
+                input(type="hidden", name="sign", value=-1)
+                input(type="text", name="price", id="price", placeholder="입력하세요")
         button.input_box.save_btn(type="submit")
             img(src="images/save_btn.png")

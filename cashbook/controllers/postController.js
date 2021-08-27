@@ -7,7 +7,7 @@ exports.history = async (req, res, next) => {
         category: req.body.category,
         memo: req.body.memo,
         payment: req.body.payment,
-        price: req.body.price,
+        price: parseInt(req.body.price)*parseInt(req.body.sign),
     };
     await model.insertHistory(history);
     res.redirect(`/main?year=${req.body.year}&month=${req.body.month}`);

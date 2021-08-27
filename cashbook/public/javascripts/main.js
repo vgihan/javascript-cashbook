@@ -3,6 +3,7 @@ document.getElementById('expenditure').addEventListener('click', expenditureChec
 document.querySelector('.input_box.category > .dropdown_box').addEventListener('click', () => dropdownHandler('category'));
 document.querySelector('.input_box.payment > .dropdown_box').addEventListener('click', () => dropdownHandler('payment'));
 document.querySelector('.dropdown_payment > .dropdown_item:last-child').addEventListener('click', addPaymentBtnClickHandler);
+document.querySelector('.input_box.price > div > span').addEventListener('click', (ev) => signClickHandler(ev));
 document.querySelectorAll('.dropdown_category > .dropdown_item > .content').forEach(element => {
     element.addEventListener('click', (ev) => dropdownClickHandler(ev, 'category'));
 });
@@ -10,6 +11,18 @@ document.querySelectorAll('.dropdown_payment > .dropdown_item > .content:not(:la
     element.addEventListener('click', (ev) => dropdownClickHandler(ev, 'payment'));
 });
 
+function signClickHandler(ev) {
+    const sign = document.querySelector('.input_box.price > div > input[type=hidden]');
+    const span = document.querySelector('.input_box.price > div > span');
+    console.log(sign.value)
+    if(parseInt(sign.value) === -1) {
+        span.innerText = '+'
+        sign.value = 1;
+    } else if(parseInt(sign.value) === 1) {
+        span.innerText = '-'
+        sign.value = -1;
+    }
+}
 function addPaymentBtnClickHandler(ev) {
     const newPayment = window.prompt('추가하실 결제수단을 입력해주세요.');
 }

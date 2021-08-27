@@ -59,6 +59,11 @@
 .input_box.price > #price {
     width: 130px;
 }
+.input_box.price > div > span {
+    cursor: pointer;
+    font-size: x-large;
+    margin-right: 30px;
+}
 .save_btn {
     display: flex;
     flex-direction: row;

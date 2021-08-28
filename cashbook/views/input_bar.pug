@@ -32,7 +32,7 @@ form(action="/history", method="POST")
     .input_bar 
         .input_box.date
             -var curDate = new Date();
-            -var date = `${curDate.getFullYear()}${curDate.getMonth().toString().padStart(2,0)}${curDate.getDay().toString().padStart(2,0)}`;
+            -var date = `${curDate.getFullYear()}-${curDate.getMonth().toString().padStart(2,0)}-${curDate.getDay().toString().padStart(2,0)}`;
             label.input_date_text 일자
             input(type="date", name="date", id="date", placeholder="입력하세요", value=date)
         .input_box.category

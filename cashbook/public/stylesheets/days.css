@@ -127,9 +127,13 @@
     top: 72px;
 
     border-bottom: 1px solid #D7D7D7;
+    cursor: pointer;
 
     flex: none;
     order: 3;
+}
+.detail_box:hover {
+    background-color: #D7D7D7;
 }
 .category_box {
     display: flex;

@@ -10,7 +10,6 @@ exports.index = (req, res, next) => {
 exports.main = async (req, res, next) => {
     const data = await model.selectHistory(req.query.year, req.query.month-1);
     const payments = await model.selectPayment();
-    console.log(payments);
     const monthStrs = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     res.render('main', {
         year: req.query.year, 

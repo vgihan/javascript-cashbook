@@ -13,7 +13,8 @@ mixin info_bar(year, month, day, dayOfWeek, income, expenditure)
 
 mixin history_boxes(histories)
     each history in histories
-        .detail_box
+        -const historyId = history.id;
+        .detail_box(id=historyId)
             -const _price = history.price.toLocaleString('ko-KR');
             .category_box
                 p.category_text #{history.category}

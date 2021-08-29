@@ -135,7 +135,7 @@
 .detail_box:hover {
     background-color: #D7D7D7;
 }
-.category_box {
+.category_text {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -148,21 +148,6 @@
     left: 12px;
     top: 20px;
 
-    background: #D092E2;
-    border-radius: 999px;
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-    margin: 0px 10px;
-}
-.category_text {
-    position: static;
-    width: 70px;
-    height: 22px;
-    left: 17.5px;
-    top: 4px;
-
     font-family: Noto Sans KR;
     font-style: normal;
     font-weight: 500;
@@ -170,6 +155,8 @@
     line-height: 22px;
     text-align: center;
 
+    background: #D092E2;
+    border-radius: 999px;
     color: #FCFCFC;
 
     flex: none;

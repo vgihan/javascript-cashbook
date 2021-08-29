@@ -1,7 +1,9 @@
 const HistoryModel = require('../../models/historyModel');
 
 const insertHistory = async (user) => {
-    await HistoryModel.create(user);
+    const history = user;
+    history['price'] = parseInt(user.price)*parseInt(user.sign);
+    await HistoryModel.create(history);
 }
 const deleteHistory = async (user) => {
     await HistoryModel.delete(user);

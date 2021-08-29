@@ -29,10 +29,11 @@ mixin dropdownPayment(list)
 form(action="/history", method="POST")
     input(type="hidden" name="year" value=year)
     input(type="hidden" name="month" value=month_num)
+    input#id(type="hidden" name="id" value=-1)
     .input_bar 
         .input_box.date
-            -var curDate = new Date();
-            -var date = `${curDate.getFullYear()}-${(curDate.getMonth()+1).toString().padStart(2,0)}-${curDate.getDate().toString().padStart(2,0)}`;
+            -const curDate = new Date();
+            -const date = `${curDate.getFullYear()}-${(curDate.getMonth()+1).toString().padStart(2,0)}-${curDate.getDate().toString().padStart(2,0)}`;
             label.input_date_text 일자
             input(type="date", name="date", id="date", placeholder="입력하세요", value=date)
         .input_box.category

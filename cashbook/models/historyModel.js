@@ -14,7 +14,6 @@ async function create(history) {
 async function read(condition) {
     const query = `SELECT * FROM history
                     WHERE strftime('%Y',date)='${condition.year}' and strftime('%m',date)='${(parseInt(condition.month)+1).toString().padStart(2, '0')}';`;
-    console.log(query)
     return await new Promise((resolve, reject) => {
         database.serialize();
         database.all(query, (err, row) => {

@@ -1,7 +1,7 @@
 mixin info_bar(year, month, day, dayOfWeek, income, expenditure)
     .day_info_box
         .day_info_date_box 
-            p.day_info_date #{month_num}월 #{day}일
+            p.day_info_date #{month}월 #{day}일
             p.day_info_dayOfWeek #{dayOfWeek}
         .day_info_sum_box 
             -const _income = income.toLocaleString('ko-KR');
@@ -16,8 +16,7 @@ mixin history_boxes(histories)
         -const historyId = history.id;
         .detail_box(id=historyId)
             -const _price = history.price.toLocaleString('ko-KR');
-            .category_box
-                p.category_text #{history.category}
+            p.category_text #{history.category}
             p.memo_text #{history.memo}
             p.payment_text #{history.payment}
             p.price_text= `${_price} 원`
@@ -25,6 +24,6 @@ mixin history_boxes(histories)
 .days_box
     each day in Object.keys(histories)
         .day_box
-            +info_bar(year, month+1, day, dayInfo[day]['dayOfWeek'], dayInfo[day]['income'], dayInfo[day]['expenditure'])
-            .history_box
+            +info_bar(year, parseInt(month_num), day, dayInfo[day]['dayOfWeek'], dayInfo[day]['income'], dayInfo[day]['expenditure'])
+            .history_box(data-date=`${year}-${parseInt(month_num).toString().padStart(2, '0')}-${day}`)
                 +history_boxes(histories[day])

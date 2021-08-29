@@ -3,23 +3,23 @@ header
     .logo_box
     .month_year 
       -const next_left_year = month_num > 1 ? year : parseInt(year)-1;
-      -const left_url = `http://localhost:3000/main?year=${next_left_year}&month=${(parseInt(month_num-2)%12+12)%12+1}`
+      -const left_url = `http://localhost:3000/main/${next_left_year}/${(parseInt(month_num-2)%12+12)%12+1}`
       a(href=left_url id="left_move" class="move_icon")
-        img(src="images/left_move_icon.png" alt="" class="move_img")
+        img(src="/images/left_move_icon.png" alt="" class="move_img")
       .text
         p(id="month") #{month_str}
         p(id="year") #{year}
       -const next_right_year = month_num < 12 ? year : parseInt(year)+1;
-      -const right_url = `http://localhost:3000/main?year=${next_right_year}&month=${parseInt(month_num)%12+1}`
+      -const right_url = `http://localhost:3000/main/${next_right_year}/${parseInt(month_num)%12+1}`
       a(href=right_url id="right_move" class="move_icon")
-        img(src="images/right_move_icon.png" alt="" class="move_img")
+        img(src="/images/right_move_icon.png" alt="" class="move_img")
     .tab
-      -const main_url = `http://localhost:3000/main?year=${year}&month=${month_num}`
+      -const main_url = `http://localhost:3000/main/${year}/${month_num}`
       a#main_icon(href=main_url)
-        img(src="images/main_icon_on.png" alt="" class="icon")
-      -const cal_url = `http://localhost:3000/calendar?year=${year}&month=${month_num}`
+        img(src="/images/main_icon_on.png" alt="" class="icon")
+      -const cal_url = `http://localhost:3000/calendar/${year}/${month_num}`
       a#cal_icon(href=cal_url)
-        img(src="images/cal_icon_off.png" alt="" class="icon" id="cal_img")
-      -const stat_url = `http://localhost:3000/statistic?year=${year}&month=${month_num}`
+        img(src="/images/cal_icon_off.png" alt="" class="icon" id="cal_img")
+      -const stat_url = `http://localhost:3000/statistic/${year}/${month_num}`
       a#stat_icon(href=stat_url)
-        img(src="images/stat_icon_off.png" alt="" class="icon" id="stat_img")
+        img(src="/images/stat_icon_off.png" alt="" class="icon" id="stat_img")

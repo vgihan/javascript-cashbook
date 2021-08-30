@@ -9,10 +9,12 @@ const main = async (req, res, next) => {
     const mainPageInfo = await MainService.makeMainPageInfo(userDTO);
     res.render('main', mainPageInfo);
 }
-const calendar = (req, res, next) => {
-
+const calendar = async (req, res, next) => {
+    const userDTO = req.params;
+    const calPageInfo = await MainService.makeCalPageInfo(userDTO);
+    res.render('calendar', calPageInfo);
 }
-const statistic = (req, res, next) => {
+const statistic = async (req, res, next) => {
 
 }
 

@@ -49,5 +49,29 @@ async function makeMainPageInfo(user) {
         }, {});
     }
 }
+async function makeCalPageInfo(user) {
+    const historyRecord = await HistoryModel.read({year: user.year, month: user.month});
+    const income = historyRecord.reduce((pre, v) => {if(v.price > 0) pre+=v.price; return pre;}, 0);
+    const expenditure = historyRecord.reduce((pre, v) => {if(v.price < 0) pre+=v.price; return pre;}, 0)
+    const monthStrs = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    return {
+        year: user.year, 
+        month_str: monthStrs[user.month-1],
+        month_num: user.month,
+        income: income,
+        expenditure: expenditure,
+        sum: income+expenditure,
+        history: getHistories(historyRecord),
+    }
+    function getHistories(data) {
+        return data.reduce((pre, v) => {
+            const curDate = new Date(v.date).getDate();
+            if(!pre[curDate]) pre[curDate] = {income: 0, expenditure: 0, sum: 0};
+            if(v.price > 0) pre[curDate].income += v.price;
+            else pre[curDate].expenditure += v.price;
+            return pre;
+        }, {});
+    }
+}
 
-module.exports = {makeMainPageInfo, makeNowDate};
+module.exports = {makeMainPageInfo, makeNowDate, makeCalPageInfo};

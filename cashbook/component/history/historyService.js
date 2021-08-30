@@ -9,7 +9,10 @@ const deleteHistory = async (user) => {
     await HistoryModel.delete(user);
 }
 const updateHistory = async (user) => {
-    await HistoryModel.update(user);
+    const history = user;
+    history['price'] = history['price'].replace(/[^0-9]/g, '');
+    history['price'] = parseInt(history['price'])*parseInt(history['sign']);
+    await HistoryModel.update(history);
 }
 
 module.exports = {insertHistory, deleteHistory, updateHistory};

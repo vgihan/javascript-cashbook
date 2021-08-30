@@ -1,10 +1,9 @@
 document.querySelector('.input_box.category > .dropdown_box').addEventListener('click', () => dropdownHandler('category'));
 document.querySelector('.input_box.payment > .dropdown_box').addEventListener('click', () => dropdownHandler('payment'));
-document.querySelector('.dropdown_payment > .dropdown_item:last-child').addEventListener('click', addPaymentBtnClickHandler);
+document.querySelector('.dropdown_payment > .dropdown_item:last-child').addEventListener('click', toggleAddModal);
 document.querySelector('.input_box.price > div > span').addEventListener('click', (ev) => changeCategory(ev));
-
-document.querySelectorAll('.detail_box').forEach(element => {
-    element.addEventListener('click', (ev) => showHistoryInputbar(ev))
+document.querySelectorAll('.dropdown_payment > .dropdown_item > img').forEach(element => {
+    element.addEventListener('click', toggleDeleteModal);
 });
 document.querySelectorAll('.dropdown_category > .dropdown_item > .content').forEach(element => {
     element.addEventListener('click', (ev) => dropdownClickHandler(ev, 'category'));
@@ -14,13 +13,15 @@ document.querySelectorAll('.dropdown_payment > .dropdown_item > .content:not(:la
 });
 
 function dropdownHandler(name) {
-    const dropdown = document.querySelector(`.dropdown_${name}`);
-    if(dropdown.style.display === 'none')
-        dropdown.style.display = 'block';
-    else dropdown.style.display = 'none';
+    document.querySelector(`.dropdown_${name}`).classList.toggle('hidden');
 }
-function addPaymentBtnClickHandler(ev) {
-    const newPayment = window.prompt('추가하실 결제수단을 입력해주세요.');
+function toggleAddModal() {
+    document.querySelector(`.add`).classList.toggle('hidden');
+}
+function toggleDeleteModal(ev) {
+    document.querySelector('#deletePayment').value = ev.currentTarget.parentNode.firstChild.innerText;
+    document.querySelector('#targetId').value = ev.currentTarget.parentNode.id;
+    document.querySelector(`.delete`).classList.toggle('hidden');
 }
 function changeCategory(ev) {
     const sign = document.querySelector('.input_box.price > div > input[type=hidden]');
@@ -43,20 +44,10 @@ function changeCategory(ev) {
         expenditureCategory.forEach((element) => element.style.display = 'flex');
     }
 }
-function showHistoryInputbar(ev) {
-    const selectedCategory = document.querySelector('.dropdown_box > .target');
-    const selectedPayment = document.querySelector('.dropdown_box > .target');
-    const categoryInput = document.querySelector('.input_box.category > #category');
-    const paymentInput = document.querySelector('.input_box.payment > #payment');
-    const dateInput = document.querySelector('.input_box.date > #date');
-    const memoInput = document.querySelector('.input_box.memo > #memo');
-    const priceInput = document.querySelector('.input_box.price > #price');
-}
 function dropdownClickHandler(ev, name) {
     const target = document.querySelector(`.input_box.${name} > .dropdown_box > .target`);
     const selectedValue = ev.target.innerText;
     target.innerText = selectedValue;
     target.style.color = 'black';
-    console.log(selectedValue)
     document.querySelector(`.input_box.${name} > #${name}`).value = selectedValue;
 }

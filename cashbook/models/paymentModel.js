@@ -1,7 +1,7 @@
 const database = require('../database').getInstance().getConnection();
 
 async function create(payment) {
-    const query = `INSERT INTO payment(payment) VALUES (${payment.payment})`;
+    const query = `INSERT INTO payment(payment) VALUES ('${payment.paymentName}')`;
     return await new Promise((resolve, reject) => {
         database.serialize();
         database.all(query, (err, row) => {
@@ -21,7 +21,8 @@ async function read() {
     });
 }
 async function del(payment) {
-    const query = `DELETE FROM payment WHERE id=${payment.name}`;
+    console.log(payment)
+    const query = `DELETE FROM payment WHERE id=${payment.paymentId}`;
     return await new Promise((resolve, reject) => {
         database.serialize();
         database.all(query, (err, row) => {

@@ -1,3 +1,5 @@
+-const categoryColors = {'문화/여가': '1','교통': '2','미분류': '3','식비': '4','생활': '5','월급': '6','쇼핑/뷰티': '7','의료/건강': '8'}
+
 mixin info_bar(year, month, day, dayOfWeek, income, expenditure)
     .day_info_box
         .day_info_date_box 
@@ -16,7 +18,7 @@ mixin history_boxes(histories)
         -const historyId = history.id;
         .detail_box(id=historyId)
             -const _price = history.price.toLocaleString('ko-KR');
-            p.category_text #{history.category}
+            p.category_text(class=`color_${categoryColors[history.category]}`) #{history.category}
             p.memo_text #{history.memo}
             p.payment_text #{history.payment}
             p.price_text= `${_price} 원`

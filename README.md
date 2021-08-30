@@ -56,6 +56,11 @@ Weekend. 프로젝트 구조 리팩토링
 
 Day 6. 내역 리스트 수정 기능 및 결제수단 추가/삭제 기능 구현
 
+- 내역 리스트 아이템 클릭 시 input_bar로 해당 내역을 옮김.
+- 모달 박스 내에 form을 만들어 patch method를 이용하여 요청함.
+- form 태그로 전송할 때, patch method 사용이 불가능했기 때문에, method override 방식을 사용함.
+- 결제수단 추가/삭제 역시 모달 박스 내 form 태그를 사용하여 요청. 삭제 시 delete method를 override 하여 요청함. 
+
 Day 7. 통계 페이지 layout 구성
 
 Day 8. 달력 페이지 layout 구성

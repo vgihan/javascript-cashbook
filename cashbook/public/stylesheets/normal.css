@@ -88,3 +88,9 @@ input:focus {
 input[type=date] {
     cursor: pointer;
 }
+input[type=button], input[type=submit] {
+    cursor: pointer;
+}
+button {
+    cursor: pointer;
+}

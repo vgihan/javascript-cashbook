@@ -1,7 +1,10 @@
-const HistoryModel = require('../../models/historyModel');
+const PaymentModel = require('../../models/paymentModel');
 
-async function insertHistory(user) {
-    await HistoryModel.create(user);
+async function insertPayment(user) {
+    await PaymentModel.create(user);
+}
+async function deletePayment(user) {
+    await PaymentModel.del(user);
 }
 
-module.exports = {insertHistory};
+module.exports = {insertPayment, deletePayment};

@@ -6,10 +6,9 @@ const create = async (req, res, next) => {
     res.redirect(`/main/${userDTO.year}/${userDTO.month}`);
 }
 const del = async (req, res, next) => {
-
+    const userDTO = req.body;
+    await PaymentService.deletePayment(userDTO);
+    res.redirect(`/main/${userDTO.year}/${userDTO.month}`);
 }
-const update = async (req, res, next) => {
-    
-}
 
-module.exports = {create, del, update};
+module.exports = {create, del};

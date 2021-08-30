@@ -1,0 +1,25 @@
+.add.modal.hidden
+    .modal_background 
+    .modal_content
+        p.message 추가하실 결제수단을 적어주세요.
+        form(action="http://localhost:3000/payment" method='POST')
+            input(type="hidden" name="year" value=year)
+            input(type="hidden" name="month" value=month_num)
+            input#addPayment(type="text", name="paymentName" placeholder="입력하세요")
+            .button_box
+                input.cancel.color_11(type="button" value="취소")
+                input.process(type='submit', value='추가')
+
+.delete.modal.hidden
+    .modal_background 
+    .modal_content
+        p.message 해당 결제수단을 삭제하시겠습니까?
+        form(action="http://localhost:3000/payment" method='POST')
+            input(type="hidden" name="year" value=year)
+            input(type="hidden" name="month" value=month_num)
+            input#deletePayment(type="text", placeholder="입력하세요" readonly)
+            input(type="hidden" id='targetId')
+            input(type="hidden")
+            .button_box
+                input.cancel.color_11(type="button" value="취소") 
+                input.process(type='submit' value='삭제')

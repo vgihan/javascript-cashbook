@@ -28,9 +28,9 @@ async function readMonthExpend(condition) {
     const preDateString = [preDate.getFullYear(), preDate.getMonth().toString().padStart(2, '0'), preDate.getDate().toString().padStart(2, '0')].join('-');
     const curDateString = [curDate.getFullYear(), curDate.getMonth().toString().padStart(2, '0'), curDate.getDate().toString().padStart(2, '0')].join('-');
     console.log(preDateString, curDateString)
-    const query = `SELECT strftime("%Y-%m", date) year_month, sum(price) expend FROM history
+    const query = `SELECT strftime("%Y-%m", date) year_month, category, sum(price) expend FROM history
                     WHERE price<0 and date BETWEEN '${preDateString}' and '${curDateString}'
-                    GROUP BY year_month;`;
+                    GROUP BY year_month, category;`;
     return await new Promise((resolve, reject) => {
         database.serialize();
         database.all(query, (err, row) => {

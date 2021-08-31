@@ -15,7 +15,9 @@ const calendar = async (req, res, next) => {
     res.render('calendar', calPageInfo);
 }
 const statistic = async (req, res, next) => {
-
+    const userDTO = req.params;
+    const statPageInfo = await MainService.makeStatPageInfo(userDTO);
+    res.render('calendar', statPageInfo);
 }
 
 module.exports = {redirect, main, calendar, statistic}

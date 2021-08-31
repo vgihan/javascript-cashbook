@@ -14,7 +14,7 @@
     .modal_background 
     .modal_content
         p.message 해당 결제수단을 삭제하시겠습니까?
-        form(action="http://localhost:3000/payment" method='POST')
+        form(action="http://localhost:3000/payment?_method=DELETE" method='POST')
             input(type="hidden" name="year" value=year)
             input(type="hidden" name="month" value=month_num)
             input#deletePayment(type="text", placeholder="입력하세요" readonly)

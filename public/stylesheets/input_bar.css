@@ -11,14 +11,12 @@
     height: 100px;
     left: 370px;
     top: 125px;
-    z-index: 2;
 
     background: white;
 
-    border: 1px solid #BBBBBB;
-
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    z-index: 2;
 }
 .input_box {
     display: flex;

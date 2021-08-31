@@ -23,8 +23,8 @@ async function read(condition) {
     });
 }
 async function readMonthExpend(condition) {
-    const preDate = new Date(condition.year, parseInt(condition.month-5));
-    const curDate = new Date(condition.year, parseInt(condition.month+1));
+    const preDate = new Date(condition.year, parseInt(condition.month)-5);
+    const curDate = new Date(condition.year, parseInt(condition.month)+1);
     const preDateString = [preDate.getFullYear(), preDate.getMonth().toString().padStart(2, '0'), preDate.getDate().toString().padStart(2, '0')].join('-');
     const curDateString = [curDate.getFullYear(), curDate.getMonth().toString().padStart(2, '0'), curDate.getDate().toString().padStart(2, '0')].join('-');
     console.log(preDateString, curDateString)

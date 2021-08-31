@@ -1,0 +1,24 @@
+-const categoryIndex = {'문화/여가': '1','교통': '2','미분류': '3','식비': '4','생활': '5','월급': '6','쇼핑/뷰티': '7','의료/건강': '8'}
+
+mixin info_bar(year, month, day, dayOfWeek, income, expenditure)
+    .day_info_box
+        .day_info_date_box 
+            p.day_info_date #{month}월 #{day}일
+            p.day_info_dayOfWeek #{dayOfWeek}
+
+mixin history_boxes(histories, category)
+    each history in histories
+        .detail_box
+            p.category_text(class=`color_${categoryIndex[category]}`) #{category}
+            p.memo_text #{history.memo}
+            p.payment_text #{history.payment}
+            p.price_text= `${history.price.toLocaleString()} 원`
+
+.list_box
+    each item in data
+        .category_box.hidden(class=`category_${categoryIndex[item.category]}`)
+            each day in Object.keys(item.history)
+                .day_box
+                    +info_bar(year, parseInt(month_num), day)
+                    .history_box(data-date=`${year}-${parseInt(month_num).toString().padStart(2, '0')}-${day}`)
+                        +history_boxes(item.history[day], item.category)

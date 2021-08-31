@@ -86,7 +86,7 @@ async function makeStatPageInfo(user) {
         month_num: user.month,
         sum: (-1)*recordSum(historyRecord),
         data: makeData(historyRecord),
-        //graph_value: ex
+        graph_value: expendOfMonth,
     }
     
     function makeData(records) {

@@ -73,5 +73,40 @@ async function makeCalPageInfo(user) {
         }, {});
     }
 }
+async function makeStatPageInfo(user) {
+    const historyRecord = await HistoryModel.read({year: user.year, month: user.month});
+    const monthStrs = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-module.exports = {makeMainPageInfo, makeNowDate, makeCalPageInfo};
+    return {
+        year: user.year, 
+        month_str: monthStrs[user.month-1],
+        month_num: user.month,
+        sum: recordSum(historyRecord),
+        data: makeData(historyRecord),
+    }
+    
+    function makeData(records) {
+        const categories = ['생활', '의료/건강', '쇼핑/뷰티', '교통', '식비', '문화/여가', '미분류'];
+        const result = resultInit(categories);
+        result.forEach(element => {
+            const categoryRecords = records.filter(record => record.category === element.category);
+            element.expend = (-1)*recordSum(categoryRecords);
+            element.history = recordOfDay(categoryRecords);
+        });
+    }
+    function resultInit(categories) {
+        return categories.reduce((pre, v) => {pre.push({category: v, expend: 0, history: {}}); return pre;}, []);
+    }
+    function recordSum(records) {
+        return records.reduce((pre, v) => {pre += v.price; return pre;}, 0);
+    }
+    function recordOfDay(records) {
+        return records.reduce((pre, v) => {
+            const date = new Date(v.date).getDate();
+            if(!pre[date]) pre[date] = [];
+            pre[date].push({memo: v.memo, payment: v.payment, price: v.price});
+        }, {});
+    }
+}
+
+module.exports = {makeMainPageInfo, makeNowDate, makeCalPageInfo, makeStatPageInfo};

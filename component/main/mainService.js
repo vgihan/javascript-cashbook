@@ -8,7 +8,7 @@ function makeNowDate() {
     return {date: nowDate, month: nowMonth, year: nowYear};
 }
 async function makeMainPageInfo(user) {
-    const historyRecord = await HistoryModel.read({year: user.year, month: parseInt(user.month-1)});
+    const historyRecord = await HistoryModel.read({year: user.year, month: user.month});
     const paymentRecord = await PaymentModel.read();
     const monthStrs = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     return {
@@ -75,14 +75,18 @@ async function makeCalPageInfo(user) {
 }
 async function makeStatPageInfo(user) {
     const historyRecord = await HistoryModel.read({year: user.year, month: user.month});
+    const expendOfMonth = await HistoryModel.readMonthExpend({year: user.year, month: user.month});
     const monthStrs = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+    console.log(expendOfMonth);
 
     return {
         year: user.year, 
         month_str: monthStrs[user.month-1],
         month_num: user.month,
-        sum: recordSum(historyRecord),
+        sum: (-1)*recordSum(historyRecord),
         data: makeData(historyRecord),
+        //graph_value: ex
     }
     
     function makeData(records) {
@@ -90,21 +94,23 @@ async function makeStatPageInfo(user) {
         const result = resultInit(categories);
         result.forEach(element => {
             const categoryRecords = records.filter(record => record.category === element.category);
-            element.expend = (-1)*recordSum(categoryRecords);
+            element.expend = recordSum(categoryRecords);
             element.history = recordOfDay(categoryRecords);
         });
+        return result.sort((a, b) => a.expend - b.expend);
     }
     function resultInit(categories) {
         return categories.reduce((pre, v) => {pre.push({category: v, expend: 0, history: {}}); return pre;}, []);
     }
     function recordSum(records) {
-        return records.reduce((pre, v) => {pre += v.price; return pre;}, 0);
+        return records.reduce((pre, v) => {if(v.price < 0) pre += v.price; return pre;}, 0);
     }
     function recordOfDay(records) {
         return records.reduce((pre, v) => {
             const date = new Date(v.date).getDate();
             if(!pre[date]) pre[date] = [];
             pre[date].push({memo: v.memo, payment: v.payment, price: v.price});
+            return pre;
         }, {});
     }
 }

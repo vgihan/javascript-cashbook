@@ -78,15 +78,13 @@ async function makeStatPageInfo(user) {
     const expendOfMonth = await HistoryModel.readMonthExpend({year: user.year, month: user.month});
     const monthStrs = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-    console.log(expendOfMonth);
-
     return {
         year: user.year, 
         month_str: monthStrs[user.month-1],
         month_num: user.month,
         sum: (-1)*recordSum(historyRecord),
         data: makeData(historyRecord),
-        graph_value: expendOfMonth,
+        graph_value: makeGraphValue(expendOfMonth),
     }
     
     function makeData(records) {
@@ -98,6 +96,14 @@ async function makeStatPageInfo(user) {
             element.history = recordOfDay(categoryRecords);
         });
         return result.sort((a, b) => a.expend - b.expend);
+    }
+    function makeGraphValue(records) {
+        const categories = ['생활', '의료/건강', '쇼핑/뷰티', '교통', '식비', '문화/여가', '미분류'];
+        const result = categories.reduce((pre, v) => {
+            pre[v] = records.filter(element => element.category === v);
+            return pre;
+        }, {});
+        return result;
     }
     function resultInit(categories) {
         return categories.reduce((pre, v) => {pre.push({category: v, expend: 0, history: {}}); return pre;}, []);

@@ -1,8 +1,23 @@
+-const life = graph_value['생활'];
+-const health = graph_value['의료/건강'];
+-const shopping = graph_value['쇼핑/뷰티'];
+-const traffic = graph_value['교통'];
+-const food = graph_value['식비'];
+-const culture = graph_value['문화/여가'];
+-const undefinedCategory = graph_value['미분류'];
+
 .graph_box.hidden
     .title
         p 생활 카테고리 소비 추이
     .graph 
-        canvas(width='1100' height="440")
+        input(type="hidden" id="life_data" data-0=life[6] data-1=life[5] data-2=life[4] data-3=life[3] data-4=life[2] data-5=life[1] data-6=life[0])
+        input(type="hidden" id="health_data" data-0=health[6] data-1=health[5] data-2=health[4] data-3=health[3] data-4=health[2] data-5=health[1] data-6=health[0])
+        input(type="hidden" id="shopping_data" data-0=shopping[6] data-1=shopping[5] data-2=shopping[4] data-3=shopping[3] data-4=shopping[2] data-5=shopping[1] data-6=shopping[0])
+        input(type="hidden" id="traffic_data" data-0=traffic[6] data-1=traffic[5] data-2=traffic[4] data-3=traffic[3] data-4=traffic[2] data-5=traffic[1] data-6=traffic[0])
+        input(type="hidden" id="food_data" data-0=food[6] data-1=food[5] data-2=food[4] data-3=food[3] data-4=food[2] data-5=food[1] data-6=food[0])
+        input(type="hidden" id="culture_data" data-0=culture[6] data-1=culture[5] data-2=culture[4] data-3=culture[3] data-4=culture[2] data-5=culture[1] data-6=culture[0])
+        input(type="hidden" id="undefinedCategory_data" data-0=undefinedCategory[6] data-1=undefinedCategory[5] data-2=undefinedCategory[4] data-3=undefinedCategory[3] data-4=undefinedCategory[2] data-5=undefinedCategory[1] data-6=undefinedCategory[0])
+        canvas(width='1111' height="450")
     .month
         each month in graph_arr
             p= month

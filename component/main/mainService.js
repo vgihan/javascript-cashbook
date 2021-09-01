@@ -61,7 +61,20 @@ async function makeCalPageInfo(user) {
         income: income,
         expenditure: expenditure,
         sum: income+expenditure,
+        cal_arr: getCalArray(user.year, user.month),
         history: getHistories(historyRecord),
+    }
+    function getCalArray(year, month) {
+        const startOfMonth = new Date(year, parseInt(month)-1);
+        const endOfMonth = new Date(year, month, 0);
+        const startPadding = Array.from({length: startOfMonth.getDay()}).map(() => 0);
+        const calArray = Array.from({length: endOfMonth.getDate() - startOfMonth.getDate() + 1}).map((v, i) => i+1);
+        const endPadding = Array.from({length: 6-endOfMonth.getDay()}).map(() => 0);
+        return getWeekArray([...startPadding, ...calArray, ...endPadding]);
+    }
+    function getWeekArray(monthArray) {
+        const init = Array.from({length:parseInt(monthArray.length/7)}).reduce((pre) => {pre.push([]); return pre}, []);
+        return monthArray.reduce((pre, v, i) => {pre[parseInt(i/7)].push(v);return pre}, init);
     }
     function getHistories(data) {
         return data.reduce((pre, v) => {
@@ -69,6 +82,7 @@ async function makeCalPageInfo(user) {
             if(!pre[curDate]) pre[curDate] = {income: 0, expenditure: 0, sum: 0};
             if(v.price > 0) pre[curDate].income += v.price;
             else pre[curDate].expenditure += v.price;
+            pre[curDate].sum += v.price;
             return pre;
         }, {});
     }

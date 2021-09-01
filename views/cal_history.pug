@@ -16,17 +16,18 @@ mixin makeEmptyBox(date)
             if (date > 0)
                 p.date.color_11= date
 
-.calendar_box 
-    each week in cal_arr 
-        .week_box
-            each date in week
-                if (history[date])
-                    +makeFilledBox(history[date].income, history[date].expenditure, history[date].sum, date)
-                else
-                    +makeEmptyBox(date)
-.all_info_box.color_11
-    .income_expend_box 
-        p.income 총 수입 #{income.toLocaleString()}
-        p.expend 총 지출 #{expend.toLocaleString()}
-    .sum_box 
-        p.sum 총계 #{sum.toLocaleString()}
+.calendar_root
+    .calendar_box 
+        each week in cal_arr 
+            .week_box
+                each date in week
+                    if (history[date])
+                        +makeFilledBox(history[date].income, history[date].expenditure, history[date].sum, date)
+                    else
+                        +makeEmptyBox(date)
+    .all_info_box.color_11
+        .income_expend_box 
+            p.income 총 수입 #{income.toLocaleString()}
+            p.expend 총 지출 #{expend.toLocaleString()}
+        .sum_box 
+            p.sum 총계 #{sum.toLocaleString()}

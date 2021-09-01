@@ -27,5 +27,5 @@ mixin history_boxes(histories)
     each day in Object.keys(histories)
         .day_box
             +info_bar(year, parseInt(month_num), day, dayInfo[day]['dayOfWeek'], dayInfo[day]['income'], dayInfo[day]['expenditure'])
-            .history_box(data-date=`${year}-${parseInt(month_num).toString().padStart(2, '0')}-${day}`)
+            .history_box(data-date=`${year}-${parseInt(month_num).toString().padStart(2, '0')}-${parseInt(day).toString().padStart(2, '0')}`)
                 +history_boxes(histories[day])

@@ -98,7 +98,8 @@ async function makeStatPageInfo(user) {
         month_num: user.month,
         sum: (-1)*recordSum(historyRecord),
         data: makeData(historyRecord),
-        graph_value: makeGraphValue(expendOfMonth),
+        graph_value: makeGraphValue(expendOfMonth, user.year, user.month),
+        graph_arr: Array.from({length:12}).reduce((pre,v,i) => {pre.push((parseInt(user.month)+5+i)%12+1); return pre}, []),
     }
     
     function makeData(records) {
@@ -111,12 +112,19 @@ async function makeStatPageInfo(user) {
         });
         return result.sort((a, b) => a.expend - b.expend);
     }
-    function makeGraphValue(records) {
+    function makeGraphValue(records, year, month) {
         const categories = ['생활', '의료/건강', '쇼핑/뷰티', '교통', '식비', '문화/여가', '미분류'];
-        const result = categories.reduce((pre, v) => {
-            pre[v] = records.filter(element => element.category === v);
+        const curDate = new Date(year, parseInt(month)-1);
+        const init = categories.reduce((pre, v) => {
+            pre[v] = [0, 0, 0, 0, 0, 0, 0];
             return pre;
         }, {});
+        const result = records.reduce((pre, v) => {
+            const preDate = new Date(v.year_month);
+            const difference = new Date(curDate - preDate).getMonth();
+            pre[v.category][difference] = v.expend;
+            return pre;
+        }, init);
         return result;
     }
     function resultInit(categories) {

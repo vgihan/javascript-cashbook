@@ -23,10 +23,10 @@ async function read(condition) {
     });
 }
 async function readMonthExpend(condition) {
-    const preDate = new Date(condition.year, parseInt(condition.month)-5);
-    const curDate = new Date(condition.year, parseInt(condition.month)+1);
-    const preDateString = [preDate.getFullYear(), preDate.getMonth().toString().padStart(2, '0'), preDate.getDate().toString().padStart(2, '0')].join('-');
-    const curDateString = [curDate.getFullYear(), curDate.getMonth().toString().padStart(2, '0'), curDate.getDate().toString().padStart(2, '0')].join('-');
+    const preDate = new Date(condition.year, parseInt(condition.month)-7, 1);
+    const curDate = new Date(condition.year, parseInt(condition.month), 0);
+    const preDateString = [preDate.getFullYear(), (preDate.getMonth()+1).toString().padStart(2, '0'), preDate.getDate().toString().padStart(2, '0')].join('-');
+    const curDateString = [curDate.getFullYear(), (curDate.getMonth()+1).toString().padStart(2, '0'), curDate.getDate().toString().padStart(2, '0')].join('-');
     const query = `SELECT strftime("%Y-%m", date) year_month, category, sum(price) expend FROM history
                     WHERE price<0 and date BETWEEN '${preDateString}' and '${curDateString}'
                     GROUP BY year_month, category;`;

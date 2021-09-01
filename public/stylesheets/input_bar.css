@@ -6,7 +6,7 @@
     align-content: center;
     padding-left: 20px;
 
-    position: fixed;
+    position: absolute;
     width: 1230px;
     height: 100px;
     left: 370px;

@@ -59,7 +59,7 @@ async function makeCalPageInfo(user) {
         month_str: monthStrs[user.month-1],
         month_num: user.month,
         income: income,
-        expenditure: expenditure,
+        expend: expenditure,
         sum: income+expenditure,
         cal_arr: getCalArray(user.year, user.month),
         history: getHistories(historyRecord),

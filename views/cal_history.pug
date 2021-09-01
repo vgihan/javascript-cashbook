@@ -1,2 +1,32 @@
--const pageDate = new Date(year, month_num);
--const initDay = pageDate.getDay();
+mixin makeFilledBox(income, expenditure, sum, date)
+    .date_box
+        .info
+            if (income > 0)
+                p.income.color_0= parseInt(income).toLocaleString()
+            if (expenditure < 0)
+                p.expenditure.color_10= expenditure.toLocaleString()
+            p.sum= sum.toLocaleString()
+        .date
+            p.date.color_11= date
+
+mixin makeEmptyBox(date)
+    .date_box 
+        .info 
+        .date
+            if (date > 0)
+                p.date.color_11= date
+
+.calendar_box 
+    each week in cal_arr 
+        .week_box
+            each date in week
+                if (history[date])
+                    +makeFilledBox(history[date].income, history[date].expenditure, history[date].sum, date)
+                else
+                    +makeEmptyBox(date)
+.all_info_box.color_11
+    .income_expend_box 
+        p.income 총 수입 #{income.toLocaleString()}
+        p.expend 총 지출 #{expend.toLocaleString()}
+    .sum_box 
+        p.sum 총계 #{sum.toLocaleString()}

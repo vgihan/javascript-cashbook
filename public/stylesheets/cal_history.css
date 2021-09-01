@@ -1,0 +1,62 @@
+.calendar_box {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 470px;
+    top: 200px;
+    width: 1050px;
+    background-color: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    z-index: 5;
+}
+.week_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.week_box:not(:first-child) {
+    border-top: 1px solid #CCCCCC;
+}
+.date_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 140px;
+    height: 130px;
+    padding: 10px 10px 10px 10px;
+
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+}
+.date_box:not(:first-child) {
+    border-left: 1px solid #CCCCCC;
+}
+.date > p {
+    display: flex;
+    justify-content: flex-end;
+}
+.all_info_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: absolute;
+    left: 470px;
+    top: 1000px;
+    width: 1050px;
+    height: 60px;
+    
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+}
+.income_expend_box {
+    display: flex;
+    flex-direction: row;
+}
+.income_expend_box > p {
+    margin-right: 30px;
+}

@@ -8,8 +8,8 @@ function selectHistory(ev) {
     document.querySelector('#memo').value = ev.currentTarget.childNodes[1].innerText;
     document.querySelector('#payment').value = ev.currentTarget.childNodes[2].innerText;
     document.querySelector('#price').value = ev.currentTarget.childNodes[3].innerText.replace(/[^0-9]/g, '');
-    document.querySelector('.category > .dropdown_box > .target').innerText = ev.currentTarget.childNodes[0].innerText;
-    document.querySelector('.payment > .dropdown_box > .target').innerText = ev.currentTarget.childNodes[2].innerText;
+    document.querySelector('.category > .dropdown_box > .display').value = ev.currentTarget.childNodes[0].innerText;
+    document.querySelector('.payment > .dropdown_box > .display').value = ev.currentTarget.childNodes[2].innerText;
     document.querySelector('#id').value = ev.currentTarget.id;
     
     const sign = document.querySelector('.input_box.price > div > input[type=hidden]');

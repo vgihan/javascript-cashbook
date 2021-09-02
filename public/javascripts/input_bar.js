@@ -29,8 +29,7 @@ function changeCategory(ev) {
     const incomeCategory = document.querySelectorAll('.dropdown_item.income');
     const expenditureCategory = document.querySelectorAll('.dropdown_item.expenditure');
     
-    document.querySelector('.input_box.category > #category').innerText = '미분류';
-    document.querySelector('.category > .dropdown_box > .target').innerText = '선택하세요';;
+    document.querySelector('.category > .dropdown_box > .target').value = '선택하세요';;
 
     if(parseInt(sign.value) === -1) {
         span.innerText = '+'
@@ -45,9 +44,10 @@ function changeCategory(ev) {
     }
 }
 function dropdownClickHandler(ev, name) {
-    const target = document.querySelector(`.input_box.${name} > .dropdown_box > .target`);
+    const target = document.querySelector(`.input_box.${name} > .dropdown_box > .display`);
+    const display = document.querySelector(`.input_box.${name} > .dropdown_box > .target`);
     const selectedValue = ev.target.innerText;
-    target.innerText = selectedValue;
+    display.value = selectedValue;
+    target.value = selectedValue;
     target.style.color = 'black';
-    document.querySelector(`.input_box.${name} > #${name}`).value = selectedValue;
 }

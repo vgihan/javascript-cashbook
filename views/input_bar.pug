@@ -1,6 +1,7 @@
 mixin dropdownCategory(expenditure, income)
     .dropdown_box
-        .target 선택하세요
+        input.display(type="text" value="선택하세요" readonly)
+        input#category.target(type="text" name="category" required)
         .icon &#5167;
     ul.dropdown_category.hidden
         each item in expenditure
@@ -12,7 +13,8 @@ mixin dropdownCategory(expenditure, income)
 
 mixin dropdownPayment(list)
     .dropdown_box 
-        .target 선택하세요
+        input.display(type="text" value="선택하세요" readonly)
+        input#payment.target(type="text" name="payment" required)
         .icon &#5167;
     ul.dropdown_payment.hidden
         each item in list
@@ -33,24 +35,22 @@ form(action="/history", method="POST")
             -const curDate = new Date();
             -const date = `${curDate.getFullYear()}-${(curDate.getMonth()+1).toString().padStart(2,0)}-${curDate.getDate().toString().padStart(2,0)}`;
             label.input_date_text 일자
-            input(type="date", name="date", id="date", placeholder="입력하세요", value=date)
+            input(type="date" name="date" id="date" placeholder="입력하세요" value=date required)
         .input_box.category
             label.input_category_text 분류
-            input(type="hidden", name="category", id="category", value='미분류')
             +dropdownCategory(expenditureCategories, incomeCategories)
         .input_box.memo
             label.input_memo_text 내용
-            input(type="text", name="memo", id="memo", placeholder="입력하세요")
+            input(type="text" name="memo" id="memo" placeholder="입력하세요" required)
         .input_box.payment
             label.input_payment_text 결제수단
-            input(type="hidden", name="payment", id="payment", value='미분류')
             -console.log(payments);
             +dropdownPayment(payments)
         .input_box.price
             label.input_price_text 금액
             div
                 span -
-                input(type="hidden", name="sign", value=-1)
-                input(type="text", name="price", id="price", placeholder="입력하세요")
+                input(type="hidden" name="sign" value=-1)
+                input(type="text" name="price" id="price" placeholder="입력하세요" required)
         button.input_box.save_btn(type="submit")
             img(src="/images/save_btn.png")

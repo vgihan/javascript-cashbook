@@ -161,8 +161,6 @@
   align-self: flex-start;
 }
 #main_icon {
-  /* 달력 */
-  /* Auto Layout */
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -173,15 +171,15 @@
   left: 88px;
 
   border-radius: 0px 10px 10px 0px;
-  /* Inside Auto Layout */
   flex: none;
   order: 2;
   flex-grow: 0;
   margin: 0px 0px;
 }
+#main_icon > svg:hover {
+  fill: #FFFFFF;
+}
 #cal_icon {
-  /* 통계 */
-  /* Auto Layout */
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -190,16 +188,16 @@
   width: 44px;
   height: 44px;
   left: 44px;
-  /* Inside Auto Layout */
 
   flex: none;
   order: 1;
   flex-grow: 0;
   margin: 0px 0px;
 }
+#cal_icon > svg:hover {
+  fill: #FFFFFF;
+}
 #stat_icon {
-  /* 내역 */
-  /* Auto Layout */
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -209,9 +207,11 @@
   height: 44px;
 
   border-radius: 10px 0px 0px 10px;
-  /* Inside Auto Layout */
   flex: none;
   order: 0;
   flex-grow: 0;
   margin: 0px 0px;
+}
+#stat_icon > svg:hover {
+  fill: #FFFFFF;
 }

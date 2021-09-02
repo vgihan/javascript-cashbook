@@ -1,5 +1,7 @@
-mixin makeFilledBox(income, expenditure, sum, date)
-    .date_box
+-const today = new Date().getDate();
+
+mixin makeFilledBox(income, expenditure, sum, date, color)
+    .date_box(class=color)
         .info
             if (income > 0)
                 p.income.color_0= parseInt(income).toLocaleString()
@@ -9,8 +11,8 @@ mixin makeFilledBox(income, expenditure, sum, date)
         .date
             p.date.color_11= date
 
-mixin makeEmptyBox(date)
-    .date_box 
+mixin makeEmptyBox(date, color)
+    .date_box(class=color)
         .info 
         .date
             if (date > 0)
@@ -22,9 +24,15 @@ mixin makeEmptyBox(date)
             .week_box
                 each date in week
                     if (history[date])
-                        +makeFilledBox(history[date].income, history[date].expenditure, history[date].sum, date)
+                        if (date === today)
+                            +makeFilledBox(history[date].income, history[date].expenditure, history[date].sum, date, 'color_12')
+                        else 
+                            +makeFilledBox(history[date].income, history[date].expenditure, history[date].sum, date, '')
                     else
-                        +makeEmptyBox(date)
+                        if (date === today)
+                            +makeEmptyBox(date, 'color_12')
+                        else 
+                            +makeEmptyBox(date, '')
     .all_info_box.color_11
         .income_expend_box 
             p.income 총 수입 #{income.toLocaleString()}

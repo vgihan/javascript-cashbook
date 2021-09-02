@@ -62,5 +62,4 @@ function dropdownClickHandler(ev, name) {
     display.value = selectedValue;
     target.value = selectedValue;
     target.style.color = 'black';
-    ev.stopPropagation();
 }

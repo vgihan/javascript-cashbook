@@ -17,7 +17,6 @@ const calendar = async (req, res, next) => {
 const statistic = async (req, res, next) => {
     const userDTO = req.params;
     const statPageInfo = await MainService.makeStatPageInfo(userDTO);
-    console.log(statPageInfo.graph_value);
     res.render('statistic', statPageInfo);
 }
 

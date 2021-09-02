@@ -5,7 +5,6 @@
 -const categoryList = data.reduce((pre, v, i) => {pre.push({category: v.category, ratio: ratios[i], price: parseInt((-1)*v.expend).toLocaleString()}); return pre;}, []);
 
 .chart_box
-    -console.log(sum);
     .circle_chart(style=`background: conic-gradient(${gradientString.join(', ')});`)
         span.hole
     .expend_info

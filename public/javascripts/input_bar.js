@@ -1,7 +1,9 @@
-document.querySelector('.input_box.category > .dropdown_box').addEventListener('click', () => dropdownHandler('category'));
-document.querySelector('.input_box.payment > .dropdown_box').addEventListener('click', () => dropdownHandler('payment'));
+document.body.addEventListener('click', closeOptionLayout);
+document.querySelector('.input_box.category > .dropdown_box').addEventListener('click', (ev) => dropdownHandler(ev, 'category'));
+document.querySelector('.input_box.payment > .dropdown_box').addEventListener('click', (ev) => dropdownHandler(ev, 'payment'));
 document.querySelector('.dropdown_payment > .dropdown_item:last-child').addEventListener('click', toggleAddModal);
 document.querySelector('.input_box.price > div > span').addEventListener('click', (ev) => changeCategory(ev));
+document.querySelector('.modal_background').addEventListener('click', closeModal);
 document.querySelectorAll('.dropdown_payment > .dropdown_item > img').forEach(element => {
     element.addEventListener('click', toggleDeleteModal);
 });
@@ -12,16 +14,28 @@ document.querySelectorAll('.dropdown_payment > .dropdown_item > .content:not(:la
     element.addEventListener('click', (ev) => dropdownClickHandler(ev, 'payment'));
 });
 
-function dropdownHandler(name) {
-    document.querySelector(`.dropdown_${name}`).classList.toggle('hidden');
+function closeModal(ev) {
+    document.querySelector('.modal').classList.add('hidden');
+    ev.stopPropagation();
 }
-function toggleAddModal() {
+function closeOptionLayout(ev) {
+    document.querySelector('.dropdown_category').classList.add('hidden');
+    document.querySelector('.dropdown_payment').classList.add('hidden');
+    ev.stopPropagation();
+}
+function dropdownHandler(ev, name) {
+    document.querySelector(`.dropdown_${name}`).classList.toggle('hidden');
+    ev.stopPropagation();
+}
+function toggleAddModal(ev) {
     document.querySelector(`.add`).classList.toggle('hidden');
+    ev.stopPropagation();
 }
 function toggleDeleteModal(ev) {
     document.querySelector('#deletePayment').value = ev.currentTarget.parentNode.firstChild.innerText;
     document.querySelector('#targetId').value = ev.currentTarget.parentNode.id;
     document.querySelector(`.delete`).classList.toggle('hidden');
+    ev.stopPropagation();
 }
 function changeCategory(ev) {
     const sign = document.querySelector('.input_box.price > div > input[type=hidden]');
@@ -33,15 +47,13 @@ function changeCategory(ev) {
 
     if(parseInt(sign.value) === -1) {
         span.innerText = '+'
-        sign.value = 1;
-        incomeCategory.forEach((element) => element.style.display = 'flex');
-        expenditureCategory.forEach((element) => element.style.display = 'none');
     } else if(parseInt(sign.value) === 1) {
         span.innerText = '-'
-        sign.value = -1;
-        incomeCategory.forEach((element) => element.style.display = 'none');
-        expenditureCategory.forEach((element) => element.style.display = 'flex');
     }
+    sign.value *= -1;
+    incomeCategory.forEach((element) => element.classList.toggle('hidden'));
+    expenditureCategory.forEach((element) => element.classList.toggle('hidden'));
+    ev.stopPropagation();
 }
 function dropdownClickHandler(ev, name) {
     const target = document.querySelector(`.input_box.${name} > .dropdown_box > .display`);
@@ -50,4 +62,5 @@ function dropdownClickHandler(ev, name) {
     display.value = selectedValue;
     target.value = selectedValue;
     target.style.color = 'black';
+    ev.stopPropagation();
 }

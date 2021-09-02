@@ -19,6 +19,11 @@
     border-radius: 50%;
     margin: 100px 100px 100px 100px;
     background-color: #CCCCCC;
+    animation: create_chart 0.5s forwards ease-in-out;
+}
+@keyframes create_chart {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
 }
 .expend_info {
     display: flex;

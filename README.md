@@ -75,6 +75,11 @@ Day 8. 달력 페이지 layout 구성
 
 Day 9. 완성도 높이기
 
+- page navigator 색 변경 구현
+- user input 유효성 검증
+- 차트 애니메이션 삽입
+- 드롭박스 및 모달 창 버블링 제어
+
 ## view - main page
 
 ![image](https://user-images.githubusercontent.com/49841765/131276981-60e48f3a-cc29-46d5-a2be-0f0b025dc8a4.png)

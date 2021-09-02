@@ -1,18 +1,19 @@
 -const categoryColors = {'문화/여가': '#D092E2','교통': '#94D3CC','미분류': '#817DCE','식비': '#4CA1DE','생활': '#4A6CC3','월급': '#B9D58C','쇼핑/뷰티': '#4CB8B8','의료/건강': '#6ED5EB'};
 -const ratios = data.reduce((pre, v, i) => {pre.push(parseInt(v.expend/sum*(-100))); return pre;}, []);
--const accumulate = ratios.reduce((pre, v, i) => {pre.push(pre[i]+v); return pre;}, [0])
+-const accumulate = ratios.reduce((pre, v, i) => {pre.push(pre[i]+v); return pre;}, [0]);
 -const gradientString = data.reduce((pre, v, i) => {pre.push(`${categoryColors[v.category]} ${accumulate[i]}% ${accumulate[i+1]}%`); return pre;}, []);
 -const categoryList = data.reduce((pre, v, i) => {pre.push({category: v.category, ratio: ratios[i], price: parseInt((-1)*v.expend).toLocaleString()}); return pre;}, []);
 
 .chart_box
+    -console.log(sum);
     .circle_chart(style=`background: conic-gradient(${gradientString.join(', ')});`)
         span.hole
     .expend_info
         .expend_sum 이번 달 지출 금액
-            span.color_0 #{sum.toLocaleString()}
+            span.color_0 #{sum.toLocaleString().replace('-', '')}
         ul.category_list
             each item in categoryList
                 li.item
                     p.category(style=`background-color: ${categoryColors[item.category]}`) #{item.category}
-                    p.ratio #{item.ratio}%
+                    p.ratio #{item.ratio.toString().replace('NaN', '0')}%
                     p.price #{item.price}

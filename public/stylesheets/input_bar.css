@@ -92,15 +92,29 @@
 }
 .dropdown_box {
     display: inline-flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
     width: 164px;
     height: 23px;
     margin-top: 10px;
     cursor: pointer;
 }
 .dropdown_box > .target {
+    position: relative;
     color: #BBBBBB;
-    margin-right: 10px;
+    margin-top: 0px;
+    cursor: pointer;
+    top:0px;
+    left: 0px;
+    display: none;
+}
+.dropdown_box > .display {
+    position: relative;
+    margin-top: 0px;
+    width: 100px;
+    left: 0px;
+    top:0px;
+    cursor: pointer;
 }
 .dropdown_payment {
     border-radius: 10px;

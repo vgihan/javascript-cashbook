@@ -64,6 +64,6 @@ function drawText(data, ctx) {
     data.forEach((v, i) => {
         ctx.font = 'bold 20px Noto Sans KR';
         ctx.fillStyle= '#333333';
-        ctx.fillText(-1*v, i*100+10, 440+(v/10000)-20);
+        ctx.fillText((-1*v).toLocaleString().replace('-',''), i*100+10, 440+(v/10000)-20);
     });
 }

@@ -1,4 +1,4 @@
-document.body.addEventListener('click', closeOptionLayout);
+document.body.addEventListener('click', bodyClickEvent);
 document.querySelector('.input_box.category > .dropdown_box').addEventListener('click', (ev) => dropdownHandler(ev, 'category'));
 document.querySelector('.input_box.payment > .dropdown_box').addEventListener('click', (ev) => dropdownHandler(ev, 'payment'));
 document.querySelector('.dropdown_payment > .dropdown_item:last-child').addEventListener('click', toggleAddModal);
@@ -16,6 +16,21 @@ document.querySelectorAll('.dropdown_payment > .dropdown_item > .content:not(:la
     element.addEventListener('click', (ev) => dropdownClickHandler(ev, 'payment'));
 });
 
+function bodyClickEvent(ev) {
+    closeOptionLayout(ev);
+    initInputBar(ev);
+}
+function initInputBar(ev) {
+    const today = new Date();
+    document.querySelector('#date').value = `${today.getFullYear()}-${(today.getMonth()+1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
+    document.querySelector('#category').value = '';
+    document.querySelector('#memo').value = '';
+    document.querySelector('#payment').value = '';
+    document.querySelector('#price').value = '';
+    document.querySelectorAll('.display').forEach(element => element.value = '선택하세요');
+    document.querySelector('form').setAttribute('action', '/history');
+    ev.stopPropagation();
+}
 function closeModal(ev) {
     document.querySelectorAll('.modal').forEach(element => {
         element.classList.add('hidden');

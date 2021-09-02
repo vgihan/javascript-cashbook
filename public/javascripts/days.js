@@ -30,4 +30,5 @@ function selectHistory(ev) {
     }
 
     document.querySelector('form').setAttribute('action', '/history?_method=PATCH');
+    ev.stopPropagation();
 }

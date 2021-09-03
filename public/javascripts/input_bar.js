@@ -3,6 +3,8 @@ document.querySelector('.input_box.category > .dropdown_box').addEventListener('
 document.querySelector('.input_box.payment > .dropdown_box').addEventListener('click', (ev) => dropdownHandler(ev, 'payment'));
 document.querySelector('.dropdown_payment > .dropdown_item:last-child').addEventListener('click', toggleAddModal);
 document.querySelector('.input_box.price > div > span').addEventListener('click', (ev) => changeCategory(ev));
+document.querySelector('.info_box').addEventListener('click', (ev) => ev.stopPropagation());
+document.querySelector('.input_bar').addEventListener('click', (ev) => ev.stopPropagation());
 document.querySelectorAll('.modal_background').forEach(element => {
     element.addEventListener('click', closeModal);
 });
@@ -60,7 +62,8 @@ function changeCategory(ev) {
     const incomeCategory = document.querySelectorAll('.dropdown_item.income');
     const expenditureCategory = document.querySelectorAll('.dropdown_item.expenditure');
     
-    document.querySelector('.category > .dropdown_box > .target').value = '선택하세요';;
+    document.querySelector('.category > .dropdown_box > .display').value = '선택하세요';
+    document.querySelector('.category > .dropdown_box > .target').value = '';
 
     if(parseInt(sign.value) === -1) {
         span.innerText = '+'
@@ -73,10 +76,13 @@ function changeCategory(ev) {
     ev.stopPropagation();
 }
 function dropdownClickHandler(ev, name) {
-    const target = document.querySelector(`.input_box.${name} > .dropdown_box > .display`);
-    const display = document.querySelector(`.input_box.${name} > .dropdown_box > .target`);
-    const selectedValue = ev.target.innerText;
+    const target = document.querySelector(`.input_box.${name} > .dropdown_box > .target`);
+    const display = document.querySelector(`.input_box.${name} > .dropdown_box > .display`);
+    const selectedValue = ev.currentTarget.innerText;
     display.value = selectedValue;
     target.value = selectedValue;
     target.style.color = 'black';
+    document.querySelector('.dropdown_payment').classList.add('hidden');
+    document.querySelector('.dropdown_category').classList.add('hidden');
+    ev.stopPropagation();
 }

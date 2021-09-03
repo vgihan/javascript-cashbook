@@ -18,15 +18,15 @@ function selectHistory(ev) {
     const expenditureCategory = document.querySelectorAll('.dropdown_item.expenditure');
 
     if(ev.currentTarget.childNodes[3].innerText[0] !== '-') {
-        span.innerText = '+'
+        span.innerText = '+';
         sign.value = 1;
-        incomeCategory.forEach((element) => element.style.display = 'flex');
-        expenditureCategory.forEach((element) => element.style.display = 'none');
+        incomeCategory.forEach((element) => element.classList.remove('hidden'));
+        expenditureCategory.forEach((element) => element.classList.add('hidden'));
     } else if(ev.currentTarget.childNodes[3].innerText[0] === '-') {
         span.innerText = '-'
         sign.value = -1;
-        incomeCategory.forEach((element) => element.style.display = 'none');
-        expenditureCategory.forEach((element) => element.style.display = 'flex');
+        incomeCategory.forEach((element) => element.classList.add('hidden'));
+        expenditureCategory.forEach((element) => element.classList.remove('hidden'));
     }
 
     document.querySelector('form').setAttribute('action', '/history?_method=PATCH');

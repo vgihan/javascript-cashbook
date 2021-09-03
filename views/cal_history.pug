@@ -23,13 +23,14 @@ mixin makeEmptyBox(date, color)
         each week in cal_arr 
             .week_box
                 each date in week
+                    -console.log(month_num, today.getMonth()+1)
                     if (history[date])
-                        if (date === today.getDate() && year == today.getFullYear())
+                        if (date === today.getDate() && month_num == today.getMonth()+1 && year == today.getFullYear())
                             +makeFilledBox(history[date].income, history[date].expenditure, history[date].sum, date, 'color_12')
                         else 
                             +makeFilledBox(history[date].income, history[date].expenditure, history[date].sum, date, '')
                     else
-                        if (date === today)
+                        if (date === today.getDate() && month_num == today.getMonth()+1 && year == today.getFullYear())
                             +makeEmptyBox(date, 'color_12')
                         else 
                             +makeEmptyBox(date, '')

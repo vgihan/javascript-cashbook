@@ -1,4 +1,4 @@
--const today = new Date().getDate();
+-const today = new Date();
 
 mixin makeFilledBox(income, expenditure, sum, date, color)
     .date_box(class=color)
@@ -24,7 +24,7 @@ mixin makeEmptyBox(date, color)
             .week_box
                 each date in week
                     if (history[date])
-                        if (date === today)
+                        if (date === today.getDate() && year == today.getFullYear())
                             +makeFilledBox(history[date].income, history[date].expenditure, history[date].sum, date, 'color_12')
                         else 
                             +makeFilledBox(history[date].income, history[date].expenditure, history[date].sum, date, '')

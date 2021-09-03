@@ -44,7 +44,6 @@ form(action="/history", method="POST")
             input(type="text" name="memo" id="memo" placeholder="입력하세요" required)
         .input_box.payment
             label.input_payment_text 결제수단
-            -console.log(payments);
             +dropdownPayment(payments)
         .input_box.price
             label.input_price_text 금액

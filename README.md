@@ -82,4 +82,4 @@ Day 9. 완성도 높이기
 
 ### Demo
 
-https://cashbook-app.herokuapp.com/main/2021/9
+https://cashbook-app.herokuapp.com/
